@@ -3,7 +3,8 @@ from componentes import *
 class FirstFit:
     
     def encontrar_espaco(self, memoria: Memoria, tamanho: int):
-        """Escolhe o primeiro espaço livre que satisfaz o pedido de alocação, a partir do endereço
+        """
+        Escolhe o primeiro espaço livre que satisfaz o pedido de alocação, a partir do endereço
         de memória menos significativo.
         """
         cont = 0
@@ -22,7 +23,8 @@ class FirstFit:
 class BestFit:
     
     def encontrar_espaco(self, memoria: Memoria, tamanho: int):
-        """Escolhe a menor área possível que pode receber a alocação.
+        """
+        Escolhe a menor área possível que pode receber a alocação.
         """ 
         menor = float('inf')
         indice_menor = -1
@@ -47,7 +49,8 @@ class BestFit:
 class WorstFit:
     
     def encontrar_espaco(self, memoria: Memoria, tamanho: int):
-        """Escolhe sempre a maior área possível.
+        """
+        Escolhe sempre a maior área possível.
         """ 
         maior = 0
         indice_maior = -1
@@ -70,7 +73,8 @@ class WorstFit:
 
 
 class Buddy: 
-    """Realiza a alocação e liberação por pares considerando blocos de tamanho 2^n, tal
+    """
+    Realiza a alocação e liberação por pares considerando blocos de tamanho 2^n, tal
     que 1 <= n <= 1, totalizando blocos mínimos de 2 UA e blocos máximos de 4096 UA.
     """ 
     def __init__(self):
