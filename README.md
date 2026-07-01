@@ -1,6 +1,6 @@
 # Simulador de Gerenciamento de Memória
 
-Simulador de alocação de memória com partições variáveis, implementado em Python. Suporta quatro estratégias de alocação: First Fit, Best Fit, Worst Fit e Buddy System.
+Simulador de alocação de memória com partições variáveis, implementado em Python. Suporta quatro estratégias de alocação: First-Fit, Best-Fit, Worst-Fit e Buddy.
 
 ---
 
@@ -19,11 +19,11 @@ O projeto utiliza **apenas a biblioteca padrão do Python**. Nenhuma instalaçã
 ## Estrutura dos arquivos
 
 ```
-.
-├── main.py           # Ponto de entrada; lê o arquivo de entrada e salva o log de saída
-├── simulador.py      # Lógica principal do sistema operacional simulado
-├── estrategias.py    # Implementações das estratégias de alocação (First, Best, Worst, Buddy)
-└── componentes.py    # Estruturas de dados: Memória, MMU, Partição, Tabela de Partições
+
+main.py           # Ponto de entrada; lê o arquivo de entrada e salva o log de saída
+simulador.py      # Lógica principal do sistema operacional simulado
+estrategias.py    # Implementações das estratégias de alocação (First-Fit, Best-Fit, Worst-Fit, Buddy)
+componentes.py    # Estruturas de dados: Memória, MMU, Partição, Tabela de Partições
 ```
 
 ---
@@ -39,7 +39,7 @@ python main.py <estrategia> <arquivo_entrada>
 | Parâmetro          | Descrição                                              | Valores aceitos                     |
 |--------------------|--------------------------------------------------------|-------------------------------------|
 | `<estrategia>`     | Estratégia de alocação de memória a ser utilizada      | `first`, `best`, `worst`, `buddy`   |
-| `<arquivo_entrada>`| Caminho para o arquivo `.txt` com as requisições       | Ex.: `entrada.txt`                  |
+| `<arquivo_entrada>`| Caminho para o arquivo `.txt` com as requisições       | Ex: `entrada.txt`                  |
 
 ### Exemplos
 
@@ -52,16 +52,7 @@ python main.py buddy entrada.txt
 
 ---
 
-## Formato do arquivo de entrada
-
-```
-<número de processos>
-<pid1>;<pid2>;...;<pidN>
-<operacao> <pid> [tamanho]
-...
-```
-
-As operações disponíveis são:
+## Possíveis operações
 
 | Operação | Argumentos          | Descrição                                      |
 |----------|---------------------|------------------------------------------------|
@@ -85,7 +76,7 @@ aloca P3 100
 
 ## Saída
 
-O simulador gera automaticamente um arquivo de log com o nome:
+O simulador gera um arquivo de log com o nome:
 
 ```
 log_<nome_entrada>_<estrategia>.txt
@@ -107,15 +98,11 @@ acesso <pid> <endereco_logico> violacao
 
 ## Estratégias de alocação
 
-- **First Fit** (`first`): aloca no primeiro espaço livre suficiente, a partir do endereço menos significativo.
-- **Best Fit** (`best`): aloca na menor área livre que comporta o processo, minimizando desperdício.
-- **Worst Fit** (`worst`): aloca na maior área livre disponível.
-- **Buddy System** (`buddy`): aloca blocos de tamanho potência de 2 (mínimo 2 UA, máximo 4096 UA), com fusão automática de blocos adjacentes na liberação.
+- **First-Fit** (`first`): escolhe a primeira área livre que satisfaça o pedido de alocação, a partir do endereço de memória menos significativo.
+- **Best -it** (`best`): escolhe a menor área possível que possa receber a alocação.
+- **Worst-Fit** (`worst`): escolhe sempre a maior área livre possível.
+- **Buddy System** (`buddy`): realiza a alocação e liberação por pares considerando blocos de
+tamanho 2^n, tal que o valor mínimo para n é 1 e o valor máximo para n é 12, totalizando blocos mínimos de 2 UA e blocos máximos de 4096 UA.
 
----
 
-## Observações
 
-- O tamanho total da memória simulada é de **4096 unidades de endereçamento (UA)**.
-- Se não houver espaço suficiente para uma alocação, a simulação registra o erro e é encerrada.
-- A tradução de endereços pela MMU usa o modelo de **partições contíguas com registrador base e limite**.
