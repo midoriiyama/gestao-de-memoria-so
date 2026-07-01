@@ -36,6 +36,7 @@ def ler_arquivo(caminho: str) -> tuple:
 
 def salvar_saida(saidas: list[str], caminho_saida: str):
     """
+    Escreve o log de saída.
     """
     with open(caminho_saida, "w") as arquivo:
         

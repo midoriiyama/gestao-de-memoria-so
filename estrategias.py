@@ -2,8 +2,8 @@ from componentes import *
 
 class FirstFit:
     """
-    Classe que representa a estratégia First-Fit. Escolhe o primeiro espaço livre que satisfaz o pedido de alocação,
-    a partir do endereço de memória menos significativo.
+    Classe que representa a estratégia de alocação First-Fit. Escolhe o primeiro espaço livre
+    que satisfaz o pedido de alocação, a partir do endereço de memória menos significativo.
     """
     def encontrar_espaco(self, memoria: Memoria, tamanho: int):
 
@@ -22,7 +22,8 @@ class FirstFit:
 
 class BestFit:
     """
-    Classe que representa a estratégia Best-Fit. Escolhe a menor área possível que pode receber a alocação.
+    Classe que representa a estratégia de alocação Best-Fit. Escolhe a menor área
+    possível que pode receber a alocação.
     """
     def encontrar_espaco(self, memoria: Memoria, tamanho: int): 
         menor = float('inf')
@@ -47,7 +48,7 @@ class BestFit:
     
 class WorstFit:
     """
-    
+    Classe que representa a estratégia de alocação Worst-Fit. Escolhe a maior área possível.
     """ 
     def encontrar_espaco(self, memoria: Memoria, tamanho: int):
         maior = 0
@@ -72,8 +73,9 @@ class WorstFit:
 
 class Buddy: 
     """
-    Classe que representa a estratégia de alocação Buddy. Realiza a alocação e liberação por pares considerando
-    blocos de tamanho 2^n, tal que 1 <= n <= 12, totalizando blocos mínimos de 2 UA e blocos máximos de 4096 UA.
+    Classe que representa a estratégia de alocação Buddy. Realiza a alocação e liberação
+    por pares considerando blocos de tamanho 2^n, tal que 1 <= n <= 12, totalizando blocos
+    mínimos de 2 UA e blocos máximos de 4096 UA.
     """ 
     def __init__(self):
         self.blocos_livres: list[tuple] = [(0, TAMANHO_MEMORIA)]
@@ -106,9 +108,6 @@ class Buddy:
     
     
     def liberar_espaco(self, particao: Particao):
-        """
-        Libera o espaço por pares considerando blocos de tamanho 2^n
-        """
         tamanho = particao.tamanho
         inicio = particao.inicio
         
