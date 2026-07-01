@@ -13,6 +13,7 @@ class SistemaOperacional:
 
     def simular(self):
         """
+        Controlador do Simulador, gerencia a operação das requisições.
         """
         for requisicao in self.requisicoes:
             
@@ -32,6 +33,7 @@ class SistemaOperacional:
     
     def alocar(self, requisicao: Requisicao):
         """
+        Realiza a operação de alocação.
         """
         ind_inicio = self.estrategia.encontrar_espaco(self.memoria, requisicao.tamanho)
         
@@ -63,6 +65,7 @@ class SistemaOperacional:
     
     def liberar(self, requisicao: Requisicao):
         """
+        Realiza a operação de liberação.
         """
         particao = self.tabela_particao.buscar_particao(requisicao.pid)
         
@@ -86,7 +89,9 @@ class SistemaOperacional:
             
         
     def acessar(self, requisicao: Requisicao):
-        
+        """
+        Realiza a operação de acesso à um endereço lógico.
+        """
         particao = self.tabela_particao.buscar_particao(requisicao.pid)
         
         if isinstance(self.estrategia, Buddy):

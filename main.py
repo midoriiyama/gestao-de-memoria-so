@@ -5,8 +5,7 @@ from estrategias import *
 
 def ler_arquivo(caminho: str) -> tuple:
     """
-    A função lê o arquivo de entrada e retorna os dados atrelados aos
-    processos que farão parte da simulação.
+    Lê o arquivo de entrada e retorna os dados atrelados aos processos que farão parte da simulação.
     """
     num_processos = 0
     lista_requisicoes = []

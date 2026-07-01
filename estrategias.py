@@ -1,12 +1,12 @@
 from componentes import *
 
 class FirstFit:
-    
+    """
+    Classe que representa a estratégia First-Fit. Escolhe o primeiro espaço livre que satisfaz o pedido de alocação,
+    a partir do endereço de memória menos significativo.
+    """
     def encontrar_espaco(self, memoria: Memoria, tamanho: int):
-        """
-        Escolhe o primeiro espaço livre que satisfaz o pedido de alocação, a partir do endereço
-        de memória menos significativo.
-        """
+
         cont = 0
         total_memoria = len(memoria.vetor)
         
@@ -21,11 +21,10 @@ class FirstFit:
             
 
 class BestFit:
-    
-    def encontrar_espaco(self, memoria: Memoria, tamanho: int):
-        """
-        Escolhe a menor área possível que pode receber a alocação.
-        """ 
+    """
+    Classe que representa a estratégia Best-Fit. Escolhe a menor área possível que pode receber a alocação.
+    """
+    def encontrar_espaco(self, memoria: Memoria, tamanho: int): 
         menor = float('inf')
         indice_menor = -1
         cont = 0
@@ -47,11 +46,10 @@ class BestFit:
             
     
 class WorstFit:
+    """
     
+    """ 
     def encontrar_espaco(self, memoria: Memoria, tamanho: int):
-        """
-        Escolhe sempre a maior área possível.
-        """ 
         maior = 0
         indice_maior = -1
         cont = 0
@@ -74,15 +72,13 @@ class WorstFit:
 
 class Buddy: 
     """
-    Realiza a alocação e liberação por pares considerando blocos de tamanho 2^n, tal
-    que 1 <= n <= 1, totalizando blocos mínimos de 2 UA e blocos máximos de 4096 UA.
+    Classe que representa a estratégia de alocação Buddy. Realiza a alocação e liberação por pares considerando
+    blocos de tamanho 2^n, tal que 1 <= n <= 12, totalizando blocos mínimos de 2 UA e blocos máximos de 4096 UA.
     """ 
     def __init__(self):
         self.blocos_livres: list[tuple] = [(0, TAMANHO_MEMORIA)]
     
-    def encontrar_espaco(self, memoria: Memoria, tamanho: int):
-        """
-        """
+    def encontrar_espaco(self, tamanho: int):
         tamanho_ideal = 2
         while tamanho_ideal < tamanho:
             tamanho_ideal *= 2
@@ -110,7 +106,9 @@ class Buddy:
     
     
     def liberar_espaco(self, particao: Particao):
-        
+        """
+        Libera o espaço por pares considerando blocos de tamanho 2^n
+        """
         tamanho = particao.tamanho
         inicio = particao.inicio
         

@@ -1,6 +1,7 @@
 # Simulador de Gerenciamento de Memória
 
-Simulador de alocação de memória com partições variáveis, implementado em Python. Suporta quatro estratégias de alocação: First-Fit, Best-Fit, Worst-Fit e Buddy.
+Trabalho destinado a disciplina de Sistemas Operacionais.
+Consiste de um simulador de alocação de memória com partições variáveis, implementado em Python. Suporta quatro estratégias de alocação: First-Fit, Best-Fit, Worst-Fit e Buddy.
 
 ---
 
